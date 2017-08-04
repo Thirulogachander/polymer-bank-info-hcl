@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<!--
+`<Name>` is Description
+
+@element Name
+-->
+<dom-module id="polymer-bank-info-hcl">
+    
+    <template>
+        <style>
+            :host {
+                display: block
+            }
+ .bank-details{
+              padding:0 20px;
+              margin:0;
+              float:left;
+              width:100%;
+              box-sizing: border-box;
+            }
+
+           .bank-details paper-input,.bank-details paper-dropdown-menu,.reg-left paper-input,.reg-right paper-input,.reg-left paper-dropdown-menu,.reg-right paper-dropdown-menu{
+             width:48%;
+             float:left;
+             margin:0 1% 0 ; 
+           }
+            paper-input:focus, paper-dropdown-menu:focus{
+             border-bottom-color: #ff6200 !important;
+            }
+            
+</style>
+<div class="bank-details">
+      <paper-input name="prefLang" label="Preferred Language" id="prefLang" value="{{bankdetails.prefLang}}" required auto-validate error-message="Preferred Language required"></paper-input>
+      <paper-input name="Current_Employer" label="Current Employer" id="Current_Employer"  value="{{bankdetails.currentEmployer}}" required auto-validate error-message="Current Employer required"></paper-input>
+      <paper-input name="Bank_Accnt_No" label="Bank Account Number" id="Bank_Accnt_No"  value="{{bankdetails.bankAccountNo}}" required allowed-pattern="[0-9]" auto-validate error-message="Bank Account required"></paper-input>
+      <paper-input name="Bank_Name" label="Bank Name" id="Bank_Name"  value="{{bankdetails.bankName}}" required auto-validate error-message="Bank Name required" allowed-pattern="[a-zA-Z]" ></paper-input>
+      <paper-input name="Bank_IFSC_Code" label="Bank IFSC Code" id="Bank_IFSC_Code"  value="{{bankdetails.bankIfscCode}}" required auto-validate error-message="Bank IFSC Code required"></paper-input>
+      <paper-dropdown-menu label="Repayment Mode" on-iron-select="_repaymentmodeSelected" value="{{bankdetails.repaymentMode}}" required auto-validate error-message="Repayment Mode required">
+          <paper-listbox slot="dropdown-content">
+            <paper-item>CHK</paper-item>
+            <paper-item>ECS</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+</div>    
+
+    </template>
+
+    <script>
+        class PolymerBankInfo extends Polymer.Element {
+
+            static get is() { return 'polymer-bank-info-hcl'; }
+
+            static get properties() {
+                return {
+                    bankdetails:{
+                        type:Object,
+                        value:{},
+                        notify:true,
+                        reflectToAttribute:true
+                    }
+                };
+            }
+
+            constructor() {
+                super();
+            }
+
+            ready() {
+                super.ready();
+
+                Polymer.RenderStatus.afterNextRender(this, function() {
+                    
+                });
+            }
+
+            _repaymentmodeSelected(e) {
+                var selectedItem = e.target.selectedItem.innerText;
+                this.bankdetails.repaymentMode = selectedItem;
+            }
+
+        }
+
+        window.customElements.define(PolymerBankInfo.is, PolymerBankInfo);
+    </script>
+</dom-module>

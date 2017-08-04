@@ -1,0 +1,29 @@
+{
+  "name": "polymer-bank-info-hcl",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Thirulogachander/polymer-bank-info-hcl",
+  "authors": [
+    "thirulogachander"
+  ],
+  "description": "bank info details",
+  "main": "https://github.com/Thirulogachander/polymer-bank-info-hcl.git",
+  "keywords": [
+    "{{site.project_name}}",
+    "web-components"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.2",
+    "paper-input": "PolymerElements/paper-input#^2.0.1",
+    "paper-item": "PolymerElements/paper-item#^2.0.0",
+    "paper-listbox": "PolymerElements/paper-listbox#^2.0.0",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#^2.0.0"
+  }
+}
